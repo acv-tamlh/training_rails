@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if @product.update(product_params)
       flash[:notice] = 'Update sucessfully'
-          redirect_to products_url
+      redirect_to products_url
       else
         flash[:notice] = 'Update fail'
         render :new
@@ -57,5 +57,13 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:id])
+    if @product.destroy
+      flash[:notice] = "Delete sucessfully"
+      redirect_to products_path
+    else
+      flash[:notice] = "Delete Failed"
+      redirect_to products_path    
+    end
   end
 end

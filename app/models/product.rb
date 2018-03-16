@@ -4,10 +4,14 @@ class Product < ApplicationRecord
 	validates_numericality_of :price, greater_than: 0
 	scope :published, ->{where(published: true)}
 
-	before_save :strip_html_from_descripton
+	before_save :strip_html_from_descripton, :to_lower_case_title
 
 	def strip_html_from_descripton
 		self.description = ActionView::Base.full_sanitizer.sanitize(self.description)
+	end
+
+	def to_lower_case_title
+		self.title.downcase!
 	end
 
 	def title_is_shorter_than_description

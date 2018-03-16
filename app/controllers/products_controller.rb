@@ -14,6 +14,21 @@ class ProductsController < ApplicationController
   end
 
   def create
+    # byebug
+      product_params = params.require(:product).permit( :title,
+                                                  :description,
+                                                  :price,
+                                                  :published,
+                                                  :category_id,
+                                                  :country)
+      @product = Product.new(product_params)
+      if @product.save
+          flash[:notice] = "You have sucessfully created the product"
+          redirect_to products_url
+      else
+        flash[:notice] = "Error in form "
+        render :new
+      end
   end
 
   def edit

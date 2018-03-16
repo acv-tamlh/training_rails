@@ -8,10 +8,7 @@
 Product.destroy_all
 products = [
   [
-    title: 'Ruby book',
-    description: 'Learn ruby programing',
-    price: 12.99,
-    published: true
+    title: 'Ruby book', description: 'Learn ruby programing', price: 12.99, published: true
   ],
   [
     title: 'Java book',

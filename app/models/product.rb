@@ -6,6 +6,7 @@ class Product < ApplicationRecord
 
 	before_save :strip_html_from_descripton, :to_lower_case_title
 
+	belongs_to :category#, optional: true
 	def strip_html_from_descripton
 		self.description = ActionView::Base.full_sanitizer.sanitize(self.description)
 	end

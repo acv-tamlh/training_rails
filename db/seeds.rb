@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Product.destroy_all
+Category.destroy_all
+
 products = [
   [
-    title: 'Ruby book', description: 'Learn ruby programing', price: 12.99, published: true
+    title: 'Ruby BBOKKK', description: 'Learn ruby programing', price: 12.99, published: true
   ],
   [
     title: 'Java book',
@@ -24,5 +26,6 @@ products = [
   ]
 ]
 products.each do |product|
-    Product.create(product)
+  puts product
+    Product.create!(product)
 end

@@ -10,17 +10,20 @@ products = [
   [
     title: 'Ruby book',
     description: 'Learn ruby programing',
-    price: 12.99
+    price: 12.99,
+    published: true
   ],
   [
     title: 'Java book',
     description: 'Learn Java programing',
-    price: 12.99
+    price: 12.99,
+    published: true
   ],
   [
     title: 'C++ book',
     description: 'Learn C++ programing',
-    price: 12.99
+    price: 12.99,
+    published: true
   ]
 ]
 products.each do |product|

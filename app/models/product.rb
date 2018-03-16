@@ -5,6 +5,8 @@ class Product < ApplicationRecord
 
 	validates_numericality_of :price, greater_than: 0
 
+	scope :published, ->{where(published: true)}
+
 	def title_is_shorter_than_description
 		return if title.blank? or description.blank?
 		if description.length < title.length

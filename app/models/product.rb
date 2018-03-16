@@ -22,5 +22,8 @@ class Product < ApplicationRecord
 		end
 	end
 
+	extend Enumerize
+		enumerize :level, in: [:easy, :difficult]
+
 
 end

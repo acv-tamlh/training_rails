@@ -1107,3 +1107,40 @@ Migrating to AddFieldToUsers (20180315175313)
   [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1[0m
   [1m[36mProduct Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM `products` WHERE `products`.`category_id` = 2 LIMIT 1[0m
   [1m[36mProduct Load (0.4ms)[0m  [1m[34mSELECT `products`.* FROM `products` WHERE `products`.`category_id` = 2[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  `products`.* FROM `products` LIMIT 10[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  `products`.* FROM `products` LIMIT 10[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 3 LIMIT 1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8 COLLATE utf8_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  `products`.* FROM `products` LIMIT 10[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  `products`.* FROM `products` LIMIT 10[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  `products`.* FROM `products` LIMIT 10[0m
+  [1m[36mCategory Load (2.2ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` IN (3, 2)[0m
+  [1m[36mProduct Load (0.5ms)[0m  [1m[34mSELECT  `products`.* FROM `products` LIMIT 10[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT `categories`.* FROM `categories` WHERE `categories`.`id` IN (3, 2)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[34mSELECT  `products`.`id` AS t0_r0, `products`.`title` AS t0_r1, `products`.`description` AS t0_r2, `products`.`created_at` AS t0_r3, `products`.`updated_at` AS t0_r4, `products`.`price` AS t0_r5, `products`.`published` AS t0_r6, `products`.`category_id` AS t0_r7, `categories`.`id` AS t1_r0, `categories`.`title` AS t1_r1, `categories`.`created_at` AS t1_r2, `categories`.`updated_at` AS t1_r3 FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` LIMIT 10[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[34mSELECT  `products`.`id` AS t0_r0, `products`.`title` AS t0_r1, `products`.`description` AS t0_r2, `products`.`created_at` AS t0_r3, `products`.`updated_at` AS t0_r4, `products`.`price` AS t0_r5, `products`.`published` AS t0_r6, `products`.`category_id` AS t0_r7, `categories`.`id` AS t1_r0, `categories`.`title` AS t1_r1, `categories`.`created_at` AS t1_r2, `categories`.`updated_at` AS t1_r3 FROM `products` LEFT OUTER JOIN `categories` ON `categories`.`id` = `products`.`category_id` LIMIT 10[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8 COLLATE utf8_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('1420580838297588135', 0)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddFieldToProduct (20180316073845)
+  [1m[35m (119.5ms)[0m  [1m[35mALTER TABLE `products` ADD `level` varchar(255)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20180316073845')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT RELEASE_LOCK('1420580838297588135')[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSET NAMES utf8 COLLATE utf8_general_ci,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[36mProduct Load (0.3ms)[0m  [1m[34mSELECT  `products`.* FROM `products` ORDER BY `products`.`id` DESC LIMIT 1[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  `categories`.* FROM `categories` WHERE `categories`.`id` = 2 LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE `products` SET `updated_at` = '2018-03-16 07:46:24', `level` = 'easy' WHERE `products`.`id` = 4[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m

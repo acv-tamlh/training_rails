@@ -40,7 +40,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   # Installing as Ruby gem
-  gem 'awesome_print'
+  gem "awesome_print", require:"ap"
 end
 
 group :development do

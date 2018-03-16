@@ -24,6 +24,6 @@ class Product < ApplicationRecord
 
 	extend Enumerize
 		enumerize :level, in: [:easy, :difficult]
-		enumerize :country, in: ISO3166::Country.translations('DE')
+		enumerize :country, in: ISO3166::Country.all_translated 
 
 end

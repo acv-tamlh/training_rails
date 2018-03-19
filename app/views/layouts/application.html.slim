@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Railssun</title>
+html
+  head
+    title Railssun
     = csrf_meta_tags
 
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  </head>
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
 
-  <body>
+  body
     - flash.each do |name , msg|
       = content_tag :div, msg, class:name
 
     = yield
-  </body>
-</html>

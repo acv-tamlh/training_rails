@@ -1,11 +1,12 @@
 class ProductsController < ApplicationController
+  before_action :getProduct, only: [:show, :edit, :update, :destroy]
+  before_action :product_params, only: [:create, :update]
   def index
     @products = Product.all.published.includes(:category).references(:category)
 
   end
 
   def show
-    @product = Product.find(params[:id])
     # byebug
   end
 
@@ -15,6 +16,33 @@ class ProductsController < ApplicationController
 
   def create
     # byebug
+    @product = Product.new(product_params)
+    return redirect_to products_url, notice: 'You have sucessfully created the product' if @product.save
+    flash[:alert] = "Error in form 2"
+    render :new
+  end
+
+  def edit
+    render :new
+  end
+
+  def update
+    return redirect_to products_url, notice: 'Update sucessfully' if @product.update(product_params)
+    flash[:alert] = 'Update fail'
+    render :new
+  end
+
+  def destroy
+    return redirect_to products_url, notice: 'Delete sucessfully' if @product.destroy
+      redirect_to products_path, alert: 'Delete failed'
+  end
+
+  private
+    def getProduct
+      @product = Product.find(params[:id])
+    end
+
+    def product_params
       product_params = params.require(:product).permit( :title,
                                                   :description,
                                                   :price,
@@ -22,48 +50,5 @@ class ProductsController < ApplicationController
                                                   :category_id,
                                                   :country,
                                                   :level)
-      @product = Product.new(product_params)
-      if @product.save
-          flash[:notice] = "You have sucessfully created the product"
-          redirect_to products_url
-      else
-        flash[:notice] = "Error in form "
-        render :new
-      end
-  end
-
-  def edit
-    @product = Product.find(params[:id])
-    render :new
-  end
-
-  def update
-    product_params = params.require(:product).permit(  :title,
-                                                        :description,
-                                                        :price,
-                                                        :category_id,
-                                                        :country,
-                                                        :published,
-                                                        :level)
-
-    @product = Product.find(params[:id])
-    if @product.update(product_params)
-      flash[:notice] = 'Update sucessfully'
-      redirect_to products_url
-      else
-        flash[:notice] = 'Update fail'
-        render :new
-      end
-  end
-
-  def destroy
-    @product = Product.find(params[:id])
-    if @product.destroy
-      flash[:notice] = "Delete sucessfully"
-      redirect_to products_path
-    else
-      flash[:notice] = "Delete Failed"
-      redirect_to products_path    
     end
-  end
 end

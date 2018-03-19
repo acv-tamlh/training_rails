@@ -17,5 +17,6 @@ module Railssun
     #add custom validators
     # config.autoload_paths += %W["#{config.root}/app/validators/"]
     config.autoload_paths += %W["#{config.root}/app/validators/"]
+
   end
 end
